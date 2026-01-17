@@ -8,7 +8,8 @@ try:
     import tensorflow as tf
 except ImportError:
     try:
-        import tflite_runtime.interpreter as tflite
+        # Try new Google LiteRT (ai-edge-litert)
+        import ai_edge_litert.interpreter as tflite
         # Create a mock object that mimics tf.lite for our usage
         class MockTFLite:
             Interpreter = tflite.Interpreter
@@ -16,7 +17,16 @@ except ImportError:
             lite = MockTFLite()
         tf = MockTF()
     except ImportError:
-        raise ImportError("Either 'tensorflow' or 'tflite-runtime' must be installed.")
+        try:
+            # Try legacy tflite-runtime
+            import tflite_runtime.interpreter as tflite
+            class MockTFLite:
+                Interpreter = tflite.Interpreter
+            class MockTF:
+                lite = MockTFLite()
+            tf = MockTF()
+        except ImportError:
+            raise ImportError("Neither 'tensorflow', 'ai-edge-litert', nor 'tflite-runtime' were found.")
 
 from pathlib import Path
 from typing import Tuple, List, Optional

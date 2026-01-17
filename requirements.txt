@@ -13,6 +13,6 @@ websockets>=12.0
 python-multipart>=0.0.9
 gunicorn>=21.2.0
 
-# Use tensorflow-cpu for Python 3.12 compatibility
-# This covers Tflite inference without the 500MB+ overhead of full GPU TF
-tensorflow-cpu>=2.16.1
+# Use ai-edge-litert for Python 3.12 compatibility and cloud efficiency
+# This is the modern, lightweight replacement for tflite-runtime
+ai-edge-litert>=1.0.1
