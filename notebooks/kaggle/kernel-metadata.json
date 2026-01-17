@@ -1,0 +1,12 @@
+{
+  "id": "hammadmunir959/wakeword-training-v2",
+  "title": "WakeWord Training V2",
+  "code_file": "wakeword-training.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "competition_sources": [],
+  "dataset_sources": []
+}

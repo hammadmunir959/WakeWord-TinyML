@@ -1,0 +1,78 @@
+# WakeWord Configuration
+
+# Dataset
+dataset:
+  name: "speech_commands_v2"
+  url: "http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz"
+  sample_rate: 16000
+  duration: 1.0  # seconds
+  classes:
+    - "yes"
+    - "no"
+    - "up"
+    - "down"
+    - "left"
+    - "right"
+    - "on"
+    - "off"
+    - "stop"
+    - "go"
+    - "_silence_"
+    - "_unknown_"
+
+# Audio Processing
+audio:
+  sample_rate: 16000
+  duration: 1.0
+  n_mfcc: 40
+  n_fft: 512
+  hop_length: 160  # 10ms at 16kHz
+  n_mels: 80
+  fmin: 20
+  fmax: 8000
+
+# Data Augmentation
+augmentation:
+  enabled: true
+  time_shift_ms: 100
+  speed_range: [0.9, 1.1]
+  noise_snr_db: [5, 20]
+  volume_db: 3
+  pitch_shift_semitones: 2
+
+# Model
+model:
+  type: "ds_cnn"  # "cnn" or "ds_cnn"
+  input_shape: [98, 40, 1]  # (time_steps, n_mfcc, channels)
+  num_classes: 12
+  dropout: 0.3
+
+# Training
+training:
+  batch_size: 64
+  epochs: 50
+  learning_rate: 0.001
+  lr_scheduler: "cosine"  # "cosine" or "plateau"
+  early_stopping_patience: 10
+  validation_split: 0.1
+
+# Optimization
+optimization:
+  quantization: "int8"  # "none", "float16", "int8"
+  target_latency_ms: 50
+
+# Inference
+inference:
+  threshold: 0.7
+  chunk_duration: 1.0
+  overlap: 0.5  # 50% overlap between chunks
+  smoothing_window: 3
+
+# Paths
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  data_splits: "data/splits"
+  checkpoints: "models/checkpoints"
+  exported: "models/exported"
+  tflite: "models/tflite"

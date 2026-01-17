@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.env
+
+# Data
+data/raw/
+data/processed/
+data/splits/
+models/checkpoints/
+
+# Kaggle / Temporary
+notebooks/kaggle/*.zip
+models/kaggle_output/_output_.zip
+models/kaggle_output/*.log
+
+# Project specific
+.ipynb_checkpoints/
+.pytest_cache/
+*.egg-info/
+dist/
+build/

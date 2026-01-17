@@ -1,0 +1,70 @@
+{
+    "classes": [
+        "yes",
+        "no",
+        "up",
+        "down",
+        "left",
+        "right",
+        "on",
+        "off",
+        "stop",
+        "go",
+        "_unknown_"
+    ],
+    "class_to_idx": {
+        "yes": 0,
+        "no": 1,
+        "up": 2,
+        "down": 3,
+        "left": 4,
+        "right": 5,
+        "on": 6,
+        "off": 7,
+        "stop": 8,
+        "go": 9,
+        "_unknown_": 10
+    },
+    "idx_to_class": {
+        "0": "yes",
+        "1": "no",
+        "2": "up",
+        "3": "down",
+        "4": "left",
+        "5": "right",
+        "6": "on",
+        "7": "off",
+        "8": "stop",
+        "9": "go",
+        "10": "_unknown_"
+    },
+    "input_shape": [
+        101,
+        40,
+        1
+    ],
+    "config": {
+        "sample_rate": 16000,
+        "duration": 1.0,
+        "n_mfcc": 40,
+        "n_fft": 512,
+        "hop_length": 160,
+        "n_mels": 80,
+        "fmin": 20,
+        "fmax": 8000,
+        "batch_size": 64,
+        "epochs": 50,
+        "learning_rate": 0.001,
+        "dropout": 0.3
+    },
+    "test_accuracy": 0.9273,
+    "val_accuracy": 0.9432,
+    "model_params": 57356,
+    "training_epochs": 42,
+    "kaggle_notebook": "https://www.kaggle.com/code/hammadmunir959/wakeword-keyword-spotting-training",
+    "training_date": "2026-01-17",
+    "notes": "Trained on Google Speech Commands v0.02 dataset with DS-CNN architecture. Download TFLite models from Kaggle notebook output.",
+    "tflite_model_size_mb": 0.22,
+    "tflite_quant_model_size_mb": 0.05,
+    "tflite_int8_model_size_mb": 0.05
+}

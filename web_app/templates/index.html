@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WakeWord AI | Real-time KWS</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="dot"></span>
+                <h1>WakeWord AI</h1>
+            </div>
+            <div class="status-badge" id="ws-status">Disconnected</div>
+        </header>
+
+        <main>
+            <section class="visualizer-card">
+                <canvas id="waveform"></canvas>
+                <div class="mic-controls">
+                    <button id="start-btn" class="btn primary">Start Listening</button>
+                    <button id="stop-btn" class="btn secondary" disabled>Stop</button>
+                </div>
+            </section>
+
+            <section class="detection-grid">
+                <div class="card prediction-card">
+                    <h3>Current Keyword</h3>
+                    <div id="detection-result" class="result-text">---</div>
+                    <div class="confidence-bar">
+                        <div id="confidence-fill" class="fill"></div>
+                    </div>
+                    <div class="stats">
+                        <span>Confidence: <b id="confidence-val">0%</b></span>
+                        <span>Latency: <b id="latency-val">0ms</b></span>
+                    </div>
+                </div>
+
+                <div class="card classes-card">
+                    <h3>Vocabulary</h3>
+                    <div class="class-list">
+                        {% for cls in classes if cls != "_unknown_" %}
+                        <span class="class-tag" id="tag-{{ cls }}">{{ cls }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <section class="history-card card">
+                <h3>Detection History</h3>
+                <div id="history-log" class="log">
+                    <div class="log-placeholder">Speak a keyword to see results...</div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>DS-CNN Optimized Model | 16kHz Mono | MFCC-40</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
